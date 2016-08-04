@@ -6,6 +6,6 @@
     <TextView
         android:id="@+id/my_text_viewItem"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="200dp"
         android:text="@string/hello_blank_fragment" />
 </FrameLayout>

@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainIntent = new Intent(LoginActivity.this,MainActivity.class);
+                Intent mainIntent = new Intent(LoginActivity.this,Acompanhamento.class);
                 mainIntent.putExtra("User",login.getText().toString());
                 pass = SHA1.sha1Hash(login.getText().toString());
                 Log.e("Hash ",pass);

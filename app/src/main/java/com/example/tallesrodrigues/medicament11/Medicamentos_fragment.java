@@ -52,7 +52,7 @@ public class Medicamentos_fragment extends Fragment {
                     .getSerializable(KEY_LAYOUT_MANAGER);
         }
         setRecyclerViewLayoutManager(mCurrentLayoutManagerType);
-        mAdapter = new MyAdapter(mDataset);
+      //  mAdapter = new MyAdapter(mDataset);
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
 
@@ -68,10 +68,10 @@ public class Medicamentos_fragment extends Fragment {
     }
 
     private void initDataset() {
-        mDataset = new String[DATASET_COUNT];
-        for (int i = 0; i < DATASET_COUNT; i++) {
-            mDataset[i] = "This is element #" + i;
-        }
+      //  mDataset = new String[DATASET_COUNT];
+      //  for (int i = 0; i < DATASET_COUNT; i++) {
+      //      mDataset[i] = "This is element #" + i;
+      //  }
     }
 
     public void setRecyclerViewLayoutManager(LayoutManagerType layoutManagerType) {

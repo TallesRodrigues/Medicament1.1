@@ -27,6 +27,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         ImageView cardimage;//new
         TextView cardtitle;
         Medicine medicine;
+        TextView horario;
 
         public ViewHolder(View v) {
             super(v);
@@ -40,6 +41,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             //textView = (TextView) v.findViewById(R.id.my_text_viewItem);
             cardimage = (ImageView) itemView.findViewById(R.id.cardimage);
             cardtitle = (TextView) itemView.findViewById(R.id.cardtitle);
+            horario = (TextView)itemView.findViewById(R.id.horario);
         }
 
       //  public TextView getTextView() {
@@ -77,6 +79,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         holder.medicine=getItem(position);// new
         holder.cardtitle.setText(list.get(position).name);
         holder.cardimage.setImageResource(list.get(position).id);
+        holder.horario.setText(list.get(position).time.toString());
 
     }
 

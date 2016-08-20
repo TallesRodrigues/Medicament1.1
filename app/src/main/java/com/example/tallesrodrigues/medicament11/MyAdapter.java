@@ -77,9 +77,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         Log.d(TAG,"Element" +position+" set.");
        // holder.getTextView().setText(mDataset[position]);
         holder.medicine=getItem(position);// new
-        holder.cardtitle.setText(list.get(position).name);
-        holder.cardimage.setImageResource(list.get(position).id);
-        holder.horario.setText(list.get(position).time.toString());
+        holder.cardtitle.setText(list.get(position).getMedicamento());
+        holder.cardimage.setImageResource(list.get(position).getId_image());
+        holder.horario.setText((String.valueOf(list.get(position).getDosagem())));
 
     }
 

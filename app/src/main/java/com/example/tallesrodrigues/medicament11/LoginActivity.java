@@ -23,6 +23,10 @@ public class LoginActivity extends AppCompatActivity {
         login = (EditText)findViewById(R.id.editText);
         password = (EditText)findViewById(R.id.editText2);
 
+        /**/
+        Intent mServiceIntent = new Intent(this,AWS.class);
+        mServiceIntent.putExtra("Id",login.getText().toString());
+        this.startService(mServiceIntent);
 
 
 

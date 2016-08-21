@@ -13,6 +13,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText login;
     private EditText password;
     private String pass;
+    DatabaseController crud ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,9 @@ public class LoginActivity extends AppCompatActivity {
         mServiceIntent.putExtra("Id",login.getText().toString());
         this.startService(mServiceIntent);
 
+        crud = new DatabaseController(getBaseContext());
+        crud.insertData(1, "medicamento", "concentracao", 3, "dosagem_tipo", 1,1,
+        0, 3, "tipo", 4, "duracao_tipo", "status", "solteiro");
 
 
 

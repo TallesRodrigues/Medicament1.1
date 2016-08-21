@@ -32,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         signupButton =(Button)findViewById(R.id.signupButton);
 
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        crud = new DatabaseController(getBaseContext());
 
         String restored = sharedPreferences.getString("login",null);
         if (restored!=null){
@@ -41,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
 
         /*Start Service to load data on background*/
         Intent mServiceIntent = new Intent(this,AWS.class);
-        mServiceIntent.putExtra("login",login.getText().toString());
+        mServiceIntent.putExtra("email", login.getText().toString());
         mServiceIntent.putExtra("password",pass);
         this.startService(mServiceIntent);
 
@@ -64,9 +65,13 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SharedPreferences.Editor ed = sharedPreferences.edit();
-                ed.putString("login", login.getText().toString());
-                ed.putString("password",password.getText().toString());
+                String email = login.getText().toString();
+                String pass = password.getText().toString();
+
+                ed.putString("email", email);
+                ed.putString("password", pass);
                 ed.apply();
+                crud.insertData(email, pass);
                 Toast.makeText(getApplication(),"Succeed",Toast.LENGTH_LONG).show();
             }
         });

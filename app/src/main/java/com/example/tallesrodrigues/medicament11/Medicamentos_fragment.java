@@ -38,7 +38,7 @@ public class Medicamentos_fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.from(getContext()).inflate(R.layout.fragment_medicamentos_fragment,container,false);
+        View rootView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_medicamentos_fragment, container, false);
         //inflate(R.layout.fragment_medicamentos_fragment, container, false);
         rootView.setTag(TAG);
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.my_recycler_view);

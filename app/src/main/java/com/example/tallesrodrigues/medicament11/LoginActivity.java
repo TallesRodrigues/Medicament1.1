@@ -5,6 +5,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -48,7 +50,17 @@ public class LoginActivity extends AppCompatActivity {
         password = (EditText)findViewById(R.id.editText2);
         signupButton =(Button)findViewById(R.id.signupButton);
 
-        progressDialog = new ProgressDialog(LoginActivity.this, R.style.AppTheme);
+        progressDialog = new ProgressDialog(LoginActivity.this);
+
+        // Set progress dialog style spinner
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        // Set the progress dialog title and message
+        progressDialog.setTitle("Medicament");
+        progressDialog.setMessage("Login in......");
+        // Set the progress dialog background color
+        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFD4D9D0")));
+        progressDialog.setIndeterminate(false);
+
 
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_MULTI_PROCESS);
         crud = new DatabaseController(getBaseContext());
@@ -110,9 +122,9 @@ public class LoginActivity extends AppCompatActivity {
 
     public void signup() {
 
-        progressDialog.setIndeterminate(true);
+        //progressDialog.setIndeterminate(true);
 
-        progressDialog.setMessage("Processing...");
+
         progressDialog.show();
 
         if (ope == 1) {
@@ -226,11 +238,15 @@ public class LoginActivity extends AppCompatActivity {
                     ed.putString("email", email);
                     ed.putString("password", pass);
                     ed.apply();
+
+                    crud.deleteAll(CreateDatabase.LOGTABLE);
                     crud.insertData(email, pass);
 
                     startAcompanhamento();
+
                     progressDialog.dismiss();
-                    // startAWS();
+
+                    startAWS();
 
                 }
                 progressDialog.dismiss();

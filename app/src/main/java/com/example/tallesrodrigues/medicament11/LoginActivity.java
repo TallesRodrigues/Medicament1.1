@@ -1,5 +1,7 @@
 package com.example.tallesrodrigues.medicament11;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
@@ -21,6 +23,9 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Calendar;
+import java.util.TimeZone;
 
 public class LoginActivity extends AppCompatActivity {
     private Button loginButton,signupButton;
@@ -64,6 +69,8 @@ public class LoginActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_MULTI_PROCESS);
         crud = new DatabaseController(getBaseContext());
+        setRecurringAlarm(getBaseContext());
+
 
         String restored = sharedPreferences.getString("email", null);
         if (restored!=null){
@@ -246,7 +253,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     progressDialog.dismiss();
 
-                    startAWS();
+                    //startAWS();
 
                 }
                 progressDialog.dismiss();
@@ -258,6 +265,26 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         }
+    }
+
+
+    private void setRecurringAlarm(Context context) {
+
+        Calendar updateTime = Calendar.getInstance();
+        updateTime.setTimeZone(TimeZone.getDefault());
+        updateTime.set(Calendar.HOUR_OF_DAY, 2);
+        updateTime.set(Calendar.MINUTE, 4);
+        Intent downloader = new Intent(context, MyStartServiceReceiver.class);
+        downloader.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, downloader, PendingIntent.FLAG_CANCEL_CURRENT);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, updateTime.getTimeInMillis(), 1000 * 60 * 2 /*AlarmManager.INTERVAL_FIFTEEN_MINUTES*/, pendingIntent);
+
+        Log.i("MyActivity", "Set alarmManager.setRepeating to: " + updateTime.getTime().toLocaleString());
+
     }
 
     @Override

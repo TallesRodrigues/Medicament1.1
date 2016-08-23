@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tallesrodrigues.medicament11">
 
-        <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -26,9 +28,10 @@
             </intent-filter>
         </activity>
 
-        <service
-            android:name=".AWS"
-            android:exported="false"/>
+
+        <service android:name=".MyService"></service>
+
+        <receiver android:name="MyStartServiceReceiver"></receiver>
 
     </application>
 

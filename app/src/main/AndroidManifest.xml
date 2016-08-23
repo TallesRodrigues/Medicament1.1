@@ -36,6 +36,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Acompanhamento" />
         </activity>
+        <activity
+            android:name=".NotificationReceiver"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            android:excludeFromRecents="true"></activity>
+
     </application>
 
 </manifest>

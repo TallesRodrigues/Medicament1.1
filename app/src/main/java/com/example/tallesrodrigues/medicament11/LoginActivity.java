@@ -258,7 +258,11 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 progressDialog.dismiss();
                 if (!isValid) {
-                    Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+                    if (authentication == "sign_up") {
+                        Toast.makeText(getBaseContext(), "User Already registered", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+                    }
                 }
             } catch (NullPointerException n) {
                 n.printStackTrace();

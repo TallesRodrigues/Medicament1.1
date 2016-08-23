@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tallesrodrigues.medicament11">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
@@ -18,7 +18,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".LoginActivity"/>
+                android:value=".LoginActivity" />
         </activity>
         <activity android:name=".LoginActivity">
             <intent-filter>
@@ -28,11 +28,14 @@
             </intent-filter>
         </activity>
 
+        <service android:name=".MyService" />
 
-        <service android:name=".MyService"></service>
-
-        <receiver android:name="MyStartServiceReceiver"></receiver>
-
+        <receiver android:name=".MyStartServiceReceiver" />
+        <activity android:name=".CardViewBig">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Acompanhamento" />
+        </activity>
     </application>
 
 </manifest>

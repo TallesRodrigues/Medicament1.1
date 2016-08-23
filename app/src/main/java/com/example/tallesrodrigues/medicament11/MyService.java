@@ -94,6 +94,8 @@ public class MyService extends IntentService {
                         Log.e("Still null ", n.toString());
                     } catch (IllegalStateException ep) {
                         ep.printStackTrace();
+                    } catch (IndexOutOfBoundsException i) {
+                        i.printStackTrace();
                     }
                 }
             }
@@ -153,7 +155,21 @@ public class MyService extends IntentService {
                 //Log.i("Medicamento Pos Execute ", String.valueOf(medicamento.size()));
                 for (int i = 0; i < medicamento.size(); i++) {
                     // Log.i("Medicamento to insert ",medicamento.get(i));
-                    String s = databaseController.insertData(id_consulta.get(i), medicamento.get(i), concentracao.get(i),
+                    if (databaseController == null) {
+                        databaseController = new DatabaseController(getBaseContext());
+                    }
+                    Log.i("Medicamento ", medicamento.get(i));
+                    Log.i("Concentracao ", concentracao.get(i));
+                    Log.i("dosagem ", String.valueOf(dosagem.get(i)));
+                    Log.i("dosagem_tipo ", dosagem_tipo.get(i));
+                    Log.i("turno_matutino ", String.valueOf(turno_matutino.get(i)));
+                    Log.i("turno_vespertino ", String.valueOf(turno_vespertino.get(i)));
+                    Log.i("turno_noturno ", String.valueOf(turno_noturno.get(i)));
+                    Log.i("periodo ", String.valueOf(periodo.get(i)));
+                    Log.i("periodo_tipo ", periodo_tipo.get(i));
+                    Log.i("Duracao ", String.valueOf(duracao.get(i)));
+                    Log.i("duracao_tipo ", duracao_tipo.get(i));
+                    databaseController.insertData(id_consulta.get(i), medicamento.get(i), concentracao.get(i),
                             dosagem.get(i), dosagem_tipo.get(i),
                             turno_matutino.get(i), turno_vespertino.get(i), turno_noturno.get(i),
                             periodo.get(i), periodo_tipo.get(i),

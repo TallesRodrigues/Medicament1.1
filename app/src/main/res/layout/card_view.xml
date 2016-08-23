@@ -10,16 +10,12 @@
     card_view:cardCornerRadius="2dp"
     card_view:contentPadding="10dp">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/rel">
+
 
             <ImageView
                 android:id="@+id/cardimage"
@@ -29,42 +25,46 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="title"
-                android:layout_marginLeft="10dp"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:id="@+id/cardtitle"
-                android:layout_gravity="center_vertical" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/receita"
-            android:weightSum="1">
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medicamento"
+            android:id="@+id/medicamento"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/cardimage"
+            android:layout_toEndOf="@+id/cardimage" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/horario"
-                android:text="Horario"
-                android:layout_gravity="center_vertical" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="3 Unidades"
+            android:id="@+id/dosagem"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
-            <!--
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="2 dias"
-                android:id="@+id/duracao"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="100dp" /> -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="20 mg"
+            android:id="@+id/concentracao"
+            android:layout_alignBottom="@+id/cardimage"
+            android:layout_alignLeft="@+id/medicamento"
+            android:layout_alignStart="@+id/medicamento" />
 
-        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="A cada 3 horas"
+            android:id="@+id/periodo"
+            android:layout_below="@+id/concentracao"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
-    </LinearLayout>
+
+    </RelativeLayout>
 </android.support.v7.widget.CardView>

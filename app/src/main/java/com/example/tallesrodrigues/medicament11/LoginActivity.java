@@ -274,7 +274,7 @@ public class LoginActivity extends AppCompatActivity {
         updateTime.setTimeZone(TimeZone.getDefault());
         updateTime.set(Calendar.HOUR_OF_DAY, 2);
         updateTime.set(Calendar.MINUTE, 4);
-        Intent downloader = new Intent(context, MyStartServiceReceiver.class);
+        Intent downloader = new Intent(context, MyStartServiceReceiver.class); //broadcast
         downloader.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, downloader, PendingIntent.FLAG_CANCEL_CURRENT);

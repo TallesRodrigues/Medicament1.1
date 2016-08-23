@@ -9,10 +9,11 @@ package com.example.tallesrodrigues.medicament11;
  */
 public class Medicine {
     private String medicamento, concentracao;
-    private String duracao_tipo, status, obs;
-    private int dosagem, dosagem_tipo, turno_matutino, turno_vespertino, turno_noturno;
+    private String duracao_tipo, dosagem_tipo, status, obs;
+    private int dosagem, turno_matutino, turno_vespertino, turno_noturno;
     private int periodo, duracao;
-    private int periodo_tipo;
+    private String periodo_tipo;
+    private int id_Consulta;
 
     public int getId_image() {
         return id_image;
@@ -24,13 +25,16 @@ public class Medicine {
 
     private int id_image;
 
-    public Medicine(String medicamento, String concentracao, int duracao, int dosagem, int period, int id_image) {
+    public Medicine(int consulta, String medicamento, String concentracao, int dosagem, String dosagem_tipo, int periodo, String periodo_tipo, int id_image) {
+        this.id_Consulta = consulta;
         this.medicamento = medicamento;
         this.concentracao = concentracao;
         this.duracao_tipo = "";
+        this.dosagem_tipo = dosagem_tipo;
         this.dosagem = dosagem;
-        this.periodo = period;
-        periodo_tipo = dosagem_tipo = turno_matutino = turno_vespertino = turno_noturno = 0;
+        this.periodo = periodo;
+        this.periodo_tipo = periodo_tipo;
+        turno_matutino = turno_vespertino = turno_noturno = 0;
         this.id_image = id_image;
 
     }
@@ -41,10 +45,18 @@ public class Medicine {
         this.duracao_tipo = "";
         this.dosagem = 0;
         this.periodo = 0;
-        periodo_tipo = dosagem_tipo = turno_matutino = turno_vespertino = turno_noturno = 0;
+        dosagem_tipo = periodo_tipo = "";
+        turno_matutino = turno_vespertino = turno_noturno = 0;
         id_image = R.mipmap.pills;
     }
 
+    public void setid_Consulta(int id_Consulta) {
+        this.id_Consulta = id_Consulta;
+    }
+
+    public int getId_Consulta() {
+        return id_Consulta;
+    }
 
     public String getMedicamento() {
         return medicamento;
@@ -94,11 +106,11 @@ public class Medicine {
         this.dosagem = dosagem;
     }
 
-    public int getDosagem_tipo() {
+    public String getDosagem_tipo() {
         return dosagem_tipo;
     }
 
-    public void setDosagem_tipo(int dosagem_tipo) {
+    public void setDosagem_tipo(String dosagem_tipo) {
         this.dosagem_tipo = dosagem_tipo;
     }
 
@@ -134,11 +146,11 @@ public class Medicine {
         this.periodo = periodo;
     }
 
-    public int getPeriodo_tipo() {
+    public String getPeriodo_tipo() {
         return periodo_tipo;
     }
 
-    public void setPeriodo_tipo(int periodo_tipo) {
+    public void setPeriodo_tipo(String periodo_tipo) {
         this.periodo_tipo = periodo_tipo;
     }
 
